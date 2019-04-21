@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% if registered %}
+
+        <h1>Timpul sa ne logam</h1>
+        <a href="{% url 'adm:login_adm' %}">Logare</a>
+
+    {% else %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            <input type="submit" value="Inregistrare" name="Inregistrare">
+        </form>
+
+    {% endif %}
+
+</body>
+</html>

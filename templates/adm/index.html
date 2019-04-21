@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titlu</title>
+</head>
+<body>
+
+    <p>Buna ziua, Domnule. Va rog sa va logati pentru a putea adauga produse in lista de oferte a magazinului</p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'adm:logout_adm' %}">Delogare</a>
+    {% else %}
+        <a href="{% url 'adm:login_adm' %}">Logare</a>
+    {% endif %}
+
+    <a href="{% url 'adm:register' %}">Inregistrare</a>
+    <a href="{% url 'adm:add' %}">Adauga Produse</a>
+
+</body>
+</html>
