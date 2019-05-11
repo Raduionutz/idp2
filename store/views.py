@@ -7,16 +7,16 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 
 def index(request):
-    return render(request, 'adm/index.html')
+    return render(request, 'store/index.html')
 @login_required
 def add(request):
-    return render(request, 'adm/add.html')
+    return render(request, 'store/add.html')
 
 def logout_adm(request):
 
     logout(request)
 
-    return HttpResponseRedirect(reverse('adm:index_adm'))
+    return HttpResponseRedirect(reverse('store:index_adm'))
 
 def login_adm(request):
     if request.method == 'POST':
@@ -29,14 +29,14 @@ def login_adm(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('adm:index_adm'))
+                return HttpResponseRedirect(reverse('store:index_adm'))
             else:
                 return HttpResponse('Your account is not active.')
         else:
             return HttpResponse('Invalid login details supplied.')
 
     else:
-        return render(request, 'adm/login.html', {})
+        return render(request, 'store/login.html', {})
 
 def register(request):
     registered = False
@@ -66,7 +66,7 @@ def register(request):
 
     return render(
         request,
-        'adm/register.html',
+        'store/register.html',
         {
             'user_form': user_form,
             'registered': registered,
